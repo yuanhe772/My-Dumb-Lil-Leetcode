@@ -21,7 +21,7 @@
 
 
 
-lass MinStack {
+class MinStack {
     
 //     // 这道题：要一直maintain一个最小值（也就是说这个最小值是online的）
 //     // 为了能够应对把最小值给pop出来以后，stack中的最小值就null了的情况
