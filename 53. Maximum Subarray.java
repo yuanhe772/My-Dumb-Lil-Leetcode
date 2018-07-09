@@ -11,4 +11,7 @@ Follow up:
 
 If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 
+
+There's a helpful tutorial for this problem:
+http://theoryofprogramming.com/2016/10/21/dynamic-programming-kadanes-algorithm/
 */
