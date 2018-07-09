@@ -26,7 +26,7 @@ class Solution {
 //     }
     
     
-    
+    // 法二：这种解法充分考虑了从右到左依次进位
     public int[] plusOne(int[] digits){
         
         for(int i = digits.length - 1; i>=0; i--){
