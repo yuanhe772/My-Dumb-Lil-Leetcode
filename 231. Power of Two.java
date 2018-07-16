@@ -32,6 +32,7 @@ class Solution {
     // }
     
     // 法二：如果是2的power，那么肯定的一点是，二进制中只有一个1     100.0%
+    // 然后还很interesting的一点是，对于一个只有一位是1的二进制数来说，它减一以后再跟自己&，肯定是0
     public boolean isPowerOfTwo(int n) {
         if(n<=0) return false;
         return (n&(n-1)) == 0;
