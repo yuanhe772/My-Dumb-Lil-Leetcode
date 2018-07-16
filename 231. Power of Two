@@ -22,12 +22,18 @@ Output: false
 
 
 class Solution {
-    // 100.0%
+    // // 法一：测试是不是2的几次方，通过left shift实现power     100.0%
+    // public boolean isPowerOfTwo(int n) {
+    //     int i = 1;
+    //     while(i>0 && i<n){ // 经过试验，这里要加个 i>0，否则的话如果n是一个超大的数，就会TLE
+    //         i <<= 1; 
+    //     }
+    //     return i == n;
+    // }
+    
+    // 法二：如果是2的power，那么肯定的一点是，二进制中只有一个1     100.0%
     public boolean isPowerOfTwo(int n) {
-        int i = 1;
-        while(i>0 && i<n){ // 经过试验，这里要加个 i>0，否则的话如果n是一个超大的数，就会TLE
-            i <<= 1; 
-        }
-        return i == n;
+        if(n<=0) return false;
+        return (n&(n-1)) == 0;
     }
 }
