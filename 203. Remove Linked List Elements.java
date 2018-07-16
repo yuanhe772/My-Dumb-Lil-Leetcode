@@ -33,6 +33,10 @@ class Solution {
 //         }
 //         return dummy.next;
         
+        
+        // 下面的揭发相当于keep了两个pointer，一个指向prev一个指着现在的curr
+        // 为了应对【6，6，6】种种情况，需要make sure返回的res是指向这个数组之前的
+        
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode prev = dummy;
