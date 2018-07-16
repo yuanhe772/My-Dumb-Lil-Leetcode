@@ -23,20 +23,25 @@ Output: 1->2->3->4->5
  */
 class Solution {
     public ListNode removeElements(ListNode head, int val) {
-//         if(curr == null || curr.next == null && curr.val == val) return null;
         
+
+        
+//         // 法一：✅46.5%
+//         if(curr == null) return null;
+//         while(curr!=null && curr.val==val) curr = curr.next;
+//         // if(curr == null || curr.next == null && curr.val == val) return null;
+
 //         ListNode dummy = new ListNode(0);
 //         dummy.next = curr;
 //         while(curr!=null && curr.next!=null){
 //             if(curr.next.val == val) curr.next = curr.next.next;
-//             curr = curr.next;
+//             else curr = curr.next;
 //         }
 //         return dummy.next;
         
         
-        // 下面的揭发相当于keep了两个pointer，一个指向prev一个指着现在的curr
-        // 为了应对【6，6，6】种种情况，需要make sure返回的res是指向这个数组之前的
         
+        // 法二：✅ 抄的答案 47.34%
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode prev = dummy;
@@ -50,5 +55,6 @@ class Solution {
             head = head.next;
         }
         return dummy.next;
+        
     }
 }
