@@ -1,25 +1,4 @@
 /**
-
-
-Given a singly linked list L: L0→L1→…→Ln-1→Ln,
-reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
-
-You may not modify the values in the list's nodes, only nodes itself may be changed.
-
-Example 1:
-
-Given 1->2->3->4, reorder it to 1->4->2->3.
-Example 2:
-
-Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
-
-
-
-*/
-
-
-
-/**
  * Definition for singly-linked list.
  * public class ListNode {
  *     int val;
@@ -47,6 +26,7 @@ class Solution {
         ListNode slow = head.next;
         ListNode fast = head.next.next;
         while(fast.next!=null && fast.next.next!=null){ //如果 1，2，3，4，5 那么fast最后会指向5，如果1，2，3，4那么fast最后会指向4
+                                                        //这种方法的话，前半部分的长度肯定>=后半部分的长度
             slow = slow.next;
             fast = fast.next.next;
         }
@@ -71,6 +51,6 @@ class Solution {
             p1.next=p2;
             p1=p2.next;
             p2=slow.next;
-            }
+        }
     }
 }
