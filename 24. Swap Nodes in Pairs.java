@@ -48,6 +48,8 @@ class Solution {
     }
     
     // // 法三：❌仍然爆炸！！！【1，2，3，4】返回【1，3，4】
+    // // 因为我在这里每个循环中改变的是curr.next.next, 而不是curr.next，所以每次循环的结果都是相当于只改变了dummy.next的那个node指向的next
+    // // 而没有改变dummy.next这个指针
     // public ListNode swapPairs(ListNode head) {
     //     ListNode dummy = new ListNode(0);
     //     dummy.next = head;
@@ -55,9 +57,9 @@ class Solution {
     //     while(curr!=null && curr.next!=null && curr.next.next!=null){
     //         ListNode n1 = curr.next;
     //         ListNode n2 = curr.next.next;
-    //         ListNode next = curr.next.next.next;
+    //         ListNode temp = curr.next.next.next;
     //         n2.next = n1;
-    //         n1.next = next;
+    //         n1.next = temp;
     //         curr = curr.next.next;
     //     }
     //     return dummy.next;
