@@ -8,10 +8,10 @@
  * }
  */
 class Solution {
+    // Recursive        97.09%
     public List<Integer> postorderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         LinkedList<Integer> res = new LinkedList<>();
-        
         while(!stack.empty() || root!=null){
             if(root!=null){
                 res.addFirst(root.val);
@@ -23,9 +23,23 @@ class Solution {
                 root = t.left;
             }
         }
-        
         return res;
     }
+    
+    
+    // //Iterative     97.09%
+    // public List<Integer> postorderTraversal(TreeNode root) {
+    //     ArrayList<Integer> res = new ArrayList<>();
+    //     helper(res, root);
+    //     return res;
+    // }
+    // public void helper(ArrayList<Integer> arr, TreeNode n){
+    //     if(n!=null){
+    //         helper(arr, n.left);
+    //         helper(arr, n.right);
+    //         arr.add(n.val);
+    //     }
+    // }
     
     
 }
