@@ -1,19 +1,4 @@
 /**
-
-Given a linked list, swap every two adjacent nodes and return its head.
-
-Example:
-
-Given 1->2->3->4, you should return the list as 2->1->4->3.
-Note:
-
-Your algorithm should use only constant extra space.
-You may not modify the values in the list's nodes, only nodes itself may be changed.
-
-*/
-
-
-/**
  * Definition for singly-linked list.
  * public class ListNode {
  *     int val;
@@ -61,5 +46,21 @@ class Solution {
         }
         return dummy.next;
     }
+    
+    // // 法三：❌仍然爆炸！！！【1，2，3，4】返回【1，3，4】
+    // public ListNode swapPairs(ListNode head) {
+    //     ListNode dummy = new ListNode(0);
+    //     dummy.next = head;
+    //     ListNode curr = dummy;
+    //     while(curr!=null && curr.next!=null && curr.next.next!=null){
+    //         ListNode n1 = curr.next;
+    //         ListNode n2 = curr.next.next;
+    //         ListNode next = curr.next.next.next;
+    //         n2.next = n1;
+    //         n1.next = next;
+    //         curr = curr.next.next;
+    //     }
+    //     return dummy.next;
+    // }
     
 }
