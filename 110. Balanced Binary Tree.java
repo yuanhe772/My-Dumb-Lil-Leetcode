@@ -46,8 +46,8 @@ class Solution {
     boolean balance = true;
 
     public boolean isBalanced(TreeNode root) {
-        if(root == null) 
-            return balance;
+        // if(root == null) 
+        //     return balance;
         int hah = maxH(root);
         return balance;
     }
@@ -55,18 +55,12 @@ class Solution {
     public int maxH(TreeNode T) {
         if(T == null)
             return 0;
-        
         // 要特别注意【1，2】的情况！
         // 还有【1，null, 2, null, 3】的情况！
         int l = maxH(T.left);
         int r = maxH(T.right);
-        
         if(Math.abs(l-r)>1) 
             balance = false;
-        
-        System.out.println(1+Math.max(l,r));
-        return 1 + Math.max(l,r);
-        // 小心三元运算符中括号的位置
-        // return 1 + (l>r? l : r);
+        return 1 + Math.max(l,r);   // 小心三元运算符中括号的位置 // return 1 + (l>r? l : r);
     }
 }
