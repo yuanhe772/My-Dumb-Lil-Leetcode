@@ -22,14 +22,16 @@ Output: 10
 class Solution {
     
     
-    // 法一：brute force, 就是找每一个bar的左界限和右界限
-    public int largestRectangleArea(int[] heights) {
-        HashMap<Integer, ArrayList<Integer>> m = new HashMap<>();
-        
-        for(int i=1; i<heights.length; i++){
-            for(int j=i-1; j<heights.length; j++){
-                
-            }
-        }
-    }
+    // // 法一：✅brute force, 就是找每一个bar的左界限和右界限            5.93%
+    // public int largestRectangleArea(int[] heights) {
+    //     int maxA = 0;
+    //     for(int i=0; i<heights.length; i++){
+    //         int minH = Integer.MAX_VALUE;
+    //         for(int j=i; j<heights.length; j++){
+    //             minH = Math.min(minH, heights[j]);
+    //             maxA = Math.max(maxA, (j-i+1) * minH);
+    //         }
+    //     }
+    //     return maxA;
+    // }
 }
