@@ -31,37 +31,68 @@ n >= 1.
 
 class Solution {
     
-    //法一：✅          83.66%
-    public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
+//     //法一：✅  没用getOrDefault()        83.66%
+//     public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
         
-        // 第一步：知道每一个node的孩子是什么
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        for(int i=0; i<ppid.size(); i++){
-            int PPid = ppid.get(i);
-            if(map.containsKey(PPid)){
-                List<Integer> l = map.get(PPid);
-                l.add(pid.get(i));
-                map.put(PPid, l);
-            }
-            else{
-                List<Integer> l = new ArrayList<>();
-                l.add(pid.get(i));
-                map.put(PPid, l);
-            }
-        }
-        List<Integer> killList = new ArrayList<>();
-        killList.add(kill);
-        getChildren(map, killList, kill);
-        return killList;   
-    }
+//         // 第一步：知道每一个node的孩子是什么
+//         Map<Integer, List<Integer>> map = new HashMap<>();
+//         for(int i=0; i<ppid.size(); i++){
+//             int PPid = ppid.get(i);
+//             if(map.containsKey(PPid)){
+//                 List<Integer> l = map.get(PPid);
+//                 l.add(pid.get(i));
+//                 map.put(PPid, l);
+//             }
+//             else{
+//                 List<Integer> l = new ArrayList<>();
+//                 l.add(pid.get(i));
+//                 map.put(PPid, l);
+//             }
+//         }
+//         List<Integer> killList = new ArrayList<>();
+//         killList.add(kill);
+//         getChildren(map, killList, kill);
+//         return killList;   
+//     }
                         
-        // 第二步：对于要kill的孩子，dfs地去把所有的孩子放进list
-    public void getChildren(Map<Integer, List<Integer>> map, List<Integer> killList, int kill){
-        if(map.containsKey(kill)){
-            for(int item: map.get(kill)){
-                killList.add(item);
-                getChildren(map, killList, item);
-            }
+//         // 第二步：对于要kill的孩子，dfs地去把所有的孩子放进list
+//     public void getChildren(Map<Integer, List<Integer>> map, List<Integer> killList, int kill){
+//         if(map.containsKey(kill)){
+//             for(int item: map.get(kill)){
+//                 killList.add(item);
+//                 getChildren(map, killList, item);
+//             }
+//         }
+//     }
+    
+    
+    
+    
+    // 法二：✅         用了getOrDefault()          25.09%
+    
+    public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
+        // 首先找到每一个node的所有direct children，放进一个Map里面
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        
+        for(int i=0; i<ppid.size(); i++){
+            int PPID = ppid.get(i);
+            List<Integer> l = map.getOrDefault(PPID, new ArrayList<>());
+            l.add(pid.get(i));
+            map.put(PPID, l);
         }
+        
+        List<Integer> l = new ArrayList<>();
+        l.add(kill);
+        getChildren(map, l, kill);
+        return l;
     }
+    
+     public void getChildren(Map<Integer, List<Integer>> map, List<Integer> killList, int kill){
+         if(map.containsKey(kill)){
+             for(int item: map.get(kill)){
+                 killList.add(item);
+                 getChildren(map, killList, item);
+             }
+         }
+     }
 }
