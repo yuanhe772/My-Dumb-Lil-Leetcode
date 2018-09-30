@@ -21,7 +21,6 @@ Explanation: The answer is "wke", with the length of 3.
 
 */
 
-
 class Solution {
     
     // // 法一.1：TLE❌: Brute force——O(n^3): Check All substring do they have duplicates 
@@ -115,7 +114,43 @@ class Solution {
     // }
     
     
-    // // 法三：改进版的sliding window. 也就是说，遇到重复的时候，不是一个一个地➕i，而是直接跳到不重复的那一位
+    
+    // 法三.2：✅改进版的sliding window. 也就是说，遇到重复的时候，不是一个一个地➕i，而是直接跳到不重复的那一位       67.5%
+    // 也就是说：要存下来每一个char所对应的index，每次遇到重复的j，就直接让前面存过的i跳到下一次不重复的地方
+    public int lengthOfLongestSubstring(String s){
+        Map<Character, Integer> map = new HashMap<>();
+        int i=0, j=0, max = 0, len = s.length();
+        while(i<len && j<len){
+            if(!map.containsKey(s.charAt(j))){
+                map.put(s.charAt(j), j);
+                j++;
+                max = Math.max(j-i, max);
+            }
+            else{
+                i = Math.max(map.get(s.charAt(j))+1, i);
+                map.remove(s.charAt(j));
+            }
+        }
+        return max;
+    }
+    
+    // // 法三.3：抄答案：✅改进版的sliding window.            86%
+    // public int lengthOfLongestSubstring(String s){
+    //     Map<Character, Integer> map = new HashMap<>();
+    //     int i=0, j=0, max = 0, len = s.length();
+    //     for(i=0,j=0 ; j<len; j++){
+    //         if (map.containsKey(s.charAt(j))) {
+    //             i = Math.max(map.get(s.charAt(j)), i);
+    //             // i = map.get(s.charAt(j));
+    //         }
+    //         max = Math.max(max, j - i + 1);
+    //         map.put(s.charAt(j), j + 1);
+    //     }
+    //     return max;
+    // }
+    
+    
+    // // 法三.1：❌改进版的sliding window. 也就是说，遇到重复的时候，不是一个一个地➕i，而是直接跳到不重复的那一位
     // // 也就是说：要存下来每一个char所对应的index，每次遇到重复的j，就直接让前面存过的i跳到下一次不重复的地方
     // // 但是 pwwkew的情况下❌：因为while里面一上来就直接先put了，然而重复的情况下，为了满足i能直接跳到正确的地方，它必须跳到原来的地方之后，而不是update后的地方之后
     // public int lengthOfLongestSubstring(String s){
@@ -128,60 +163,11 @@ class Solution {
     //             System.out.println(s.substring(i,j));
     //         }
     //         else{
-    //             i = map.get(s.charAt(j))+1;
+    //             i = Math.max(map.get(s.charAt(j))+1, i);
     //             map.remove(s.charAt(j));
     //         }
     //     }
     //     return max;
     // }
-    
-    
-    // // 法三.2：改进版的sliding window. 也就是说，遇到重复的时候，不是一个一个地➕i，而是直接跳到不重复的那一位
-    // // 也就是说：要存下来每一个char所对应的index，每次遇到重复的j，就直接让前面存过的i跳到下一次不重复的地方
-    // public int lengthOfLongestSubstring(String s){
-    //     Map<Character, Integer> map = new HashMap<>();
-    //     int i=0, j=0, max = 0, len = s.length();
-    //     while(i<len && j<len){
-    //         if(!map.containsKey(s.charAt(j))){
-    //             map.put(s.charAt(j), j);
-    //             j++;
-    //             max = Math.max(j-i, max);
-    //             System.out.println(s.substring(i,j));
-    //         }
-    //         else{
-    //             map.put(s.charAt(j), j);
-    //             i = map.get(s.charAt(j))+1;
-    //             map.remove(s.charAt(j));
-    //             // map.put(s.charAt(j), j);
-    //         }
-    //     }
-    //     return max;
-    // }
-    
-    // 法三：改进版的sliding window. 也就是说，遇到重复的时候，不是一个一个地➕i，而是直接跳到不重复的那一位
-    // 也就是说：要存下来每一个char所对应的index，每次遇到重复的j，就直接让前面存过的i跳到下一次不重复的地方
-    // 但是 pwwkew的情况下❌：因为while里面一上来就直接先put了，然而重复的情况下，为了满足i能直接跳到正确的地方，它必须跳到原来的地方之后，而不是update后的地方之后
-    public int lengthOfLongestSubstring(String s){
-        Map<Character, Integer> map = new HashMap<>();
-        int i=0, j=0, max = 0, len = s.length();
-        for(i=0,j=0 ; j<len; j++){
-            // if (map.containsKey(s.charAt(j))) {
-            //     i = Math.max(map.get(s.charAt(j)), i);
-            // }
-            // max = Math.max(max, j - i + 1);
-            // map.put(s.charAt(j), j + 1);
-            
-            if(map.put(s.charAt(j), j) == null){
-                j++;
-                max = Math.max(j-i, max);
-                System.out.println(s.substring(i,j));
-            }
-            else{
-                i = map.get(s.charAt(j))+1;
-                map.remove(s.charAt(j));
-            }
-        }
-        return max;
-    }
     
 }
