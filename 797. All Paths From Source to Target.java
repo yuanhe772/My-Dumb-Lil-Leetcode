@@ -41,7 +41,7 @@ class Solution {
                 dfs(graph, graph[node][i], path, res);
             }
         }
-        //没有这句话的话， 结果就成了 [[0,1,3],[0,1,3,2,3]]
+        //没有这句话的话， 结果就成了 [[0,1,3],[0,1,3,2,3]]，这句话起到了backTrack的作用
         path.remove(path.size()-1);
         return res;
     }
