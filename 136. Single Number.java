@@ -19,4 +19,7 @@ class Solution {
         }
         return res;
     }
+    
+    // 法三：如果用的是python，那就存在list的加减法，那就可以用 2*(a+b+c) - (2*a + b + 2*c) 得到singular的元素。
+    // return 2 * sum(set(nums)) - sum(nums)
 }
