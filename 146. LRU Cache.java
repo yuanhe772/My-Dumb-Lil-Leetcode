@@ -29,7 +29,7 @@ class LRUCache {
     
     //              43.19%
     
-    // LRU Cache就是传说中的：最先丢弃的是用的最少的那个item
+    // LRU Cache就是传说中的：最先丢弃的是用的最早的那个item
     // 需要一个DLL去keep先后顺序
     // 需要一个HashMap去keep某个key里面存着的node是啥，也就是用来读值和判断要的set的node是不是存在
     // 需要一个int counter和一个capacity去keep cache的capacity
