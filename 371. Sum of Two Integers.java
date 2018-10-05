@@ -42,6 +42,11 @@ class Solution {
         return getSum(a^b, (a&b) << 1); // 要用括号把 （a&b）给括起来，否则的话好像先进行 b<<1 才进行的 a&b   
     }
     
+    // 法二.2: 精简版 recursive      100%
+    public int getSum(int a, int b){
+        return b==0? a:getSum(a^b, (a&b) << 1);
+    }
+    
     
     // // 法三：recursive              100%
     // public int getSum(int a, int b) {
