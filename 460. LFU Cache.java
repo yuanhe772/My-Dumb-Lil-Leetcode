@@ -1,4 +1,7 @@
 public class LFUCache {
+    // 为了能够keep一个least used cache，需要能够keep 每个元素的使用次数， 用一个hashmap实现
+    // 为了能够keep它的key value值，需要一个hashmap去放key-value pair
+    // 为了能够缓解：用的次数一样多的时候 能够顺利地evict出一个元素，就需要一个hashmap<Integer count, LinkedHashSet<Integer>> lists, 每次找如何evict的时候就从这里面找
     HashMap<Integer, Integer> vals;
     HashMap<Integer, Integer> counts;
     HashMap<Integer, LinkedHashSet<Integer>> lists;
