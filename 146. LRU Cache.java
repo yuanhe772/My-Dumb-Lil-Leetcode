@@ -58,7 +58,7 @@ class LRUCache {
     
     // 只负责DLL加head
     private void add(node n){
-        node after = head.next;
+        node after = head.next; // 这个after是为了keep新的head的next的那个field
         head.next = n;
         n.prev = head;
         n.next = after;
