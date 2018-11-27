@@ -41,17 +41,33 @@ class Solution {
         //     return res;   
         // }
     
-    //Recursive2    100%
+//     //Recursive2    100%
+//     public List<Integer> preorderTraversal(TreeNode root) {
+//         ArrayList<Integer> res = new ArrayList<>();
+//         helper(res, root);
+//         return res;
+//     }
+//     public void helper(ArrayList<Integer> arr, TreeNode n){
+//         if(n!=null){
+//             arr.add(n.val);
+//             helper(arr, n.left);
+//             helper(arr, n.right);
+//         }
+//     }
+    
+    
+    
+     //Recursive3:    100%
     public List<Integer> preorderTraversal(TreeNode root) {
         ArrayList<Integer> res = new ArrayList<>();
         helper(res, root);
         return res;
     }
-    public void helper(ArrayList<Integer> arr, TreeNode n){
-        if(n!=null){
-            arr.add(n.val);
-            helper(arr, n.left);
-            helper(arr, n.right);
-        }
+    // Helper should be improved to 
+     public void helper(ArrayList<> res, TreeNode root) {
+        if(root == null) return;
+        res.add(root.val);
+        helper(res, root.left);
+        helper(res, root.left);
     }
 }
