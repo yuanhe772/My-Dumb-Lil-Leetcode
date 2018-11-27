@@ -39,25 +39,42 @@ class Solution {
 //     }
     
     
-    // 法三：DP2:
-    // 今天的值和昨天的比
-    public int maxProfit(int[] prices){
-        if(prices == null || prices.length == 0) return 0;
+//     // 法三：DP2:
+//     // 今天的值和昨天的比
+//     public int maxProfit(int[] prices){
+//         if(prices == null || prices.length == 0) return 0;
         
-        int min = prices[0];
-        int[] dp = new int[prices.length];
+//         int min = prices[0];
+//         int[] dp = new int[prices.length];
         
-        dp[0] = 0;
+//         dp[0] = 0;
         
-        for(int i=1; i<prices.length; i++){
-            if(prices[i] > prices[i-1]){
-                dp[i] = Math.max(dp[i-1], prices[i] - min);
-            }
-            else{
-                dp[i] = dp[i-1];
-                min = Math.min(prices[i], min);
-            }
-        }
-        return dp[prices.length-1];
+//         for(int i=1; i<prices.length; i++){
+//             if(prices[i] > prices[i-1]){
+//                 dp[i] = Math.max(dp[i-1], prices[i] - min);
+//             }
+//             else{
+//                 dp[i] = dp[i-1];
+//                 min = Math.min(prices[i], min);
+//             }
+//         }
+//         return dp[prices.length-1];
+//     }
+// }
+
+// 法四：DP3：
+// 其实简单的画个图一句话就搞定了呀：
+
+public int maxProfit(int[] prices) {
+    if(prices == null || prices.length == 0) return 0;
+
+    int min = prices[0];
+    int[] dp = new int[prices.length];
+    dp[0] = 0;
+
+    for(int i=1; i<prices.length; i++){
+        dp[i] = Math.max(dp[i-1], prices[i] - min);
+        min = Math.min(prices[i], min);
     }
+    return dp[prices.length-1];
 }
