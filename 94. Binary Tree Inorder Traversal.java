@@ -50,5 +50,21 @@ class Solution {
     //         helper(arr, n.right);
     //     }
     // }
+
+    
+    // Recursive should be improved to:
+    public List<Integer> inorderTraversal(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        helper(res, root);
+        return res;
+    }
+    
+    public void helper(ArrayList<> res, TreeNode root) {
+        if(root == null) return;
+        helper(res, root.left);
+        res.add(root.val);
+        helper(res, root.left);
+    }
+    
     
 }
