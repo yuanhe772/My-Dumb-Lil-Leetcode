@@ -27,7 +27,7 @@ class Solution {
     }
     
     
-    // //Iterative     97.09%
+    // //Recursive     97.09%
     // public List<Integer> postorderTraversal(TreeNode root) {
     //     ArrayList<Integer> res = new ArrayList<>();
     //     helper(res, root);
@@ -40,6 +40,21 @@ class Solution {
     //         arr.add(n.val);
     //     }
     // }
+    
+    
+    //Recursive2:    100%
+    public List<Integer> postorderTraversal(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<>();
+        helper(res, root);
+        return res;
+    }
+    // Helper should be improved to 
+    public void helper(ArrayList<> res, TreeNode root) {
+        if(root == null) return;
+        helper(res, root.left);
+        helper(res, root.left);
+        res.add(root.val);
+    }
     
     
 }
