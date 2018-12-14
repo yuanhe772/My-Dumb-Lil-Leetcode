@@ -2,7 +2,7 @@
 class MyHashMap {
     ListNode[] buckets;
     int idx(int key){
-        return Integer.hashCode(key) % buckets.length;
+        return Integer.hashCode(key) % buckets.length; /// Integer.hashCode(key) 返回的应该就是int key的Memory address
     }
     
     // need to return prev because remove needs the prev node!!
