@@ -12,6 +12,8 @@ class Solution {
                 num = num*10 + s.charAt(i) - '0'; 
             } 
             if(!Character.isDigit(s.charAt(i)) || i == s.length()-1) {
+                // 所以说相当于遇见非数字的时候，使用的其实是上一个遇见过的sign，而不是现在这个sign
+                // 所以现在这个num其实相当于是减数和除数，而被减数和被除数早就在stack里面存好了
                 if(sign=='-'){
                     stack.push(-num);
                 }
