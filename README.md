@@ -1,3 +1,3 @@
-# Leetcode racer records
-Keep up the good work  
-& May the odds be on your side
+# Leetcode
+
+A leetcode a day, keeps peasant life a way
